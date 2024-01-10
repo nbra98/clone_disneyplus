@@ -1,6 +1,8 @@
 // Imports
-@use 'variaveis';
 @use 'hero';
+@use 'plans';
+@use 'shows';
+@use 'variaveis';
 
 @font-face {
   font-family: Avenir;
@@ -16,13 +18,17 @@
 
 * {
   box-sizing: border-box;
+  font-family: Avenir, sans-serif;
   margin: 0;
   padding: 0;
 }
 
+li {
+  list-style: none;
+}
+
 body {
   background-color: variaveis.$corDeFundo;
-  font-family: Avenir, sans-serif;
 }
 
 // Variáveis dos Textos
@@ -65,4 +71,18 @@ body {
   @include text(18px);
   color: variaveis.$corTitulos;
   text-decoration: underline;
+}
+
+.button {
+  display: block;
+  background-color: variaveis.$corBotao;
+  border: none;
+  border-radius: 4px;
+  color: variaveis.$corTitulos;
+  font-size: 18px;
+  height: 60px;
+  text-transform: uppercase;
+  margin-top: 2vw;
+  margin-bottom: 8px;
+  width: 100%;
 }
