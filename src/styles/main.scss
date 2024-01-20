@@ -1,4 +1,8 @@
 // Imports
+@use 'available-devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
 @use 'hero';
 @use 'plans';
 @use 'shows';
@@ -44,27 +48,51 @@ body {
 }
 
 .title--big {
-  @include text(44px);
+  @include title(44px);
+
+  @media (max-width: 768px) {
+    @include title(26px);
+  }
 }
 
 .title--medium {
-  @include text;
+  @include title;
+
+  @media (max-width: 768px) {
+    @include text(24px);
+  }
 }
 
 .title--small {
-  @include text(28px);
+  @include title(28px);
+
+  @media (max-width: 768px) {
+    @include title(22px);
+  }
 }
 
 .text--big {
   @include text(18px);
+
+  @media (max-width: 768px) {
+    @include text(14px);
+  }
 }
 
 .text--medium {
   @include text;
+
+  @media (max-width: 768px) {
+    @include text(14px);
+  }
 }
 
 .text--small {
   @include text(12px);
+
+  @media (max-width: 768px) {
+    @include text(10px);
+  }
 }
 
 .link--text {
@@ -74,15 +102,90 @@ body {
 }
 
 .button {
-  display: block;
-  background-color: variaveis.$corBotao;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: variaveis.$corDeFundoBotaoPrimario;
+  border: 1px solid variaveis.$corDeFundoBotaoPrimario;
   border-radius: 4px;
   color: variaveis.$corTitulos;
+  cursor: pointer;
   font-size: 18px;
   height: 60px;
+  letter-spacing: 1px;
+  padding: 8px 14px;
   text-transform: uppercase;
-  margin-top: 2vw;
-  margin-bottom: 8px;
   width: 100%;
+
+  &:hover {
+    background-color: lighten(variaveis.$corDeFundoBotaoPrimario, 3%);
+  }
+
+  &--secondary {
+    background-color: variaveis.$corDeFundoBotaoSecundario;
+    border-color: variaveis.$corDeFundoBotaoSecundario;
+  
+    &:hover {
+      background-color: lighten(variaveis.$corDeFundoBotaoSecundario, 3%);
+    }
+  }
+
+  &--dark {
+    background-color: rgba(variaveis.$corDeFundoBotaoDark, 0.8);
+    border-color: variaveis.$corParagrafos;
+
+    &:hover {
+      background-color: variaveis.$corParagrafos;
+      color: variaveis.$corDeFundo;
+    }
+  }
+}
+
+.image-text-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding: 5.6vw;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  &__text_container {
+    padding: 0 2vw;
+
+    p {
+      margin-top: 24px;
+    }
+  }
+  
+  &--image-full-width {
+    display: block;
+    position: relative;
+
+    img {
+      width: 100%;
+    }
+
+    &__text_container {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      justify-content: center;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: calc(50% - 5.6vw);
+
+      @media (max-width: 768px) {
+       position: relative;
+       left: 0;
+       width: 100%;
+      }
+    }
+  }
 }
